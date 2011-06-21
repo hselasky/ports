@@ -18,16 +18,16 @@ BUILD_DEPENDS=
 LIB_DEPENDS=	jack.0:${PORTSDIR}/audio/jack
 
 LICENSE=	BSD
-
 USE_BZIP2=	yes
-
 MAKE_JOBS_SAFE=	yes
-
 MANCOMPRESSED=	yes
-
 MAN8=		jack_umidi.8
 
+PLIST_FILES=	bin/jack_umidi
+
 OPTIONS=	DEBUG "Build with debugging support" Off
+
+.include <bsd.port.options.mk>
 
 MAKE_ARGS+=" HAVE_MAN=YES"
 
