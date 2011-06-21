@@ -1,0 +1,6 @@
+bin/midipp
+share/pixmaps/midipp.png
+share/applications/midipp.desktop
+@dirrmtry share/pixmaps
+@dirrmtry share/applications
+
