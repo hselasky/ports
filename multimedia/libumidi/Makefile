@@ -21,6 +21,8 @@ USE_BZIP2=	yes
 OPTIONS=	DEBUG "Build with debugging support" Off \
 		JACK "Build with Jack support" On
 
+.include <bsd.port.options.mk>
+
 .if defined(WITH_JACK)
 MAKE_ARGS+=" HAVE_JACK=YES"
 LIB_DEPENDS=	jack.0:${PORTSDIR}/audio/jack
