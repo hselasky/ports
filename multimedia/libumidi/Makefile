@@ -15,7 +15,6 @@ MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	A universal general purpose MIDI library
 
 LICENSE=	BSD
-
 USE_BZIP2=	yes
 
 OPTIONS=	DEBUG "Build with debugging support" Off \
