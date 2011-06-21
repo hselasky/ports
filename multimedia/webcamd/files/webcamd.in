@@ -1,0 +1,39 @@
+#!/bin/sh
+# $FreeBSD: ports/multimedia/webcamd/files/webcamd.in,v 1.6 2011/04/21 09:06:26 kwm Exp $
+#
+# PROVIDE: webcamd
+# REQUIRE: DAEMON
+#
+# Add the following line to /etc/rc.conf[.local] to enable webcamd:
+#
+# webcamd_enable="YES"
+#
+
+webcamd_enable=${webcamd_enable-"NO"}
+hald_enable=${hald_enable-"NO"}
+
+. /etc/rc.subr
+
+name=webcamd
+rcvar=`set_rcvar`
+command=%%PREFIX%%/sbin/webcamd
+command_args="-B -U webcamd -G webcamd"
+
+start_precmd="${name}_prestart"
+
+webcamd_prestart()
+{
+  if checkyesno hald_enable ; then
+	command_args="$command_args -H"
+  fi
+}
+
+pidfile="/var/run/webcamd.*.0.pid"
+
+load_rc_config $name
+if [ $# -gt 1 ]; then
+	pidfile="webcamd.dummy"
+	command_args="$command_args -d $2 -i 0"
+	# Only run the rc command if the appropriate arguments are specified:	
+	run_rc_command $1
+fi
