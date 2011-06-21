@@ -18,16 +18,16 @@ BUILD_DEPENDS=
 LIB_DEPENDS=	jack.0:${PORTSDIR}/audio/jack
 
 LICENSE=	BSD
-
 USE_BZIP2=	yes
-
 MAKE_JOBS_SAFE=	yes
-
 MANCOMPRESSED=	yes
-
 MAN8=		jack_ghero.8
 
 OPTIONS=	DEBUG "Build with debugging support" Off
+
+.include <bsd.port.options.mk>
+
+PLIST_FILES=	bin/jack_ghero
 
 MAKE_ARGS+=" HAVE_MAN=YES"
 
