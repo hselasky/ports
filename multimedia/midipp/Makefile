@@ -16,15 +16,11 @@ COMMENT=	A MIDI playback, recording and live performance tool
 
 LIB_DEPENDS=	umidi20.1:${PORTSDIR}/multimedia/libumidi
 
+LICENSE=	BSD
+USE_BZIP2=	yes
 USE_QT_VER=	4
 QT_COMPONENTS=	gui qmake_build
-
 QMAKE_ARGS=	PREFIX=${PREFIX} ${PORTNAME}.pro
-
-LICENSE=	BSD
-
-USE_BZIP2=	yes
-
 MAKE_JOBS_SAFE=	yes
 
 .include <bsd.port.mk>
