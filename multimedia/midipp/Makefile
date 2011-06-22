@@ -19,7 +19,7 @@ LIB_DEPENDS=	umidi20.1:${PORTSDIR}/multimedia/libumidi
 LICENSE=	BSD
 USE_BZIP2=	yes
 USE_QT_VER=	4
-QT_COMPONENTS=	gui qmake_build
+QT_COMPONENTS=	gui qmake_build moc
 QMAKE_ARGS=	PREFIX=${PREFIX} ${PORTNAME}.pro
 MAKE_JOBS_SAFE=	yes
 
