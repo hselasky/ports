@@ -22,7 +22,7 @@ MAKE_JOBS_SAFE=	yes
 MANCOMPRESSED=	yes
 MAN8=		jack_umidi.8
 
-PLIST_FILES=	bin/jack_umidi
+PLIST_FILES=	sbin/jack_umidi
 
 OPTIONS=	DEBUG "Build with debugging support" Off
 

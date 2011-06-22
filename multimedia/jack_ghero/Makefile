@@ -22,11 +22,11 @@ MAKE_JOBS_SAFE=	yes
 MANCOMPRESSED=	yes
 MAN8=		jack_ghero.8
 
+PLIST_FILES=	sbin/jack_ghero
+
 OPTIONS=	DEBUG "Build with debugging support" Off
 
 .include <bsd.port.options.mk>
-
-PLIST_FILES=	bin/jack_ghero
 
 MAKE_ARGS+=" HAVE_MAN=YES"
 
