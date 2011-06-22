@@ -32,4 +32,6 @@ LIB_DEPENDS=	jack.0:${PORTSDIR}/audio/jack
 MAKE_ARGS+=" HAVE_DEBUG=YES"
 .endif
 
+MAKE_ARGS+=" HAVE_MAN=YES"
+
 .include <bsd.port.mk>
