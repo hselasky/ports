@@ -2,7 +2,7 @@
 # Date created:		2007-01-23
 # Whom:			trasz <trasz@pin.if.uz.zgora.pl>
 #
-# $FreeBSD: ports/audio/jack-keyboard/Makefile,v 1.22 2010/03/28 06:31:06 dinoex Exp $
+# $FreeBSD: ports/audio/jack-keyboard/Makefile,v 1.23 2011/06/23 12:14:17 kwm Exp $
 #
 
 PORTNAME=	jack-keyboard
@@ -13,6 +13,7 @@ MASTER_SITES=	SF \
 
 MAINTAINER=	trasz@FreeBSD.org
 COMMENT=	Virtual keyboard for JACK MIDI
+
 LICENSE=	BSD
 
 LIB_DEPENDS=	jack.0:${PORTSDIR}/audio/jack

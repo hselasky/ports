@@ -2,12 +2,12 @@
 # Date created: 21 June 2011
 # Whom:         Hans Petter Selasky <hselasky@FreeBSD.org>
 #
-# $FreeBSD$
+# $FreeBSD: ports/audio/jack_ghero/Makefile,v 1.1 2011/06/23 12:52:20 kwm Exp $
 #
 
 PORTNAME=	jack_ghero
 PORTVERSION=	1.0.0
-CATEGORIES=	multimedia
+CATEGORIES=	audio
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://hselasky.homeunix.org:8192/distfiles/
 
