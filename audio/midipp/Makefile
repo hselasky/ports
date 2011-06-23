@@ -14,7 +14,7 @@ MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	A MIDI playback, recording and live performance tool
 
-LIB_DEPENDS=	umidi20.1:${PORTSDIR}/multimedia/libumidi
+LIB_DEPENDS=	umidi20.1:${PORTSDIR}/audio/libumidi
 
 LICENSE=	BSD
 USE_BZIP2=	yes
