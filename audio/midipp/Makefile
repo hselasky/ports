@@ -6,13 +6,15 @@
 #
 
 PORTNAME=	midipp
-PORTVERSION=	1.0.1
+PORTVERSION=	1.0.3
 CATEGORIES=	audio
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://hselasky.homeunix.org:8192/distfiles/
 
 MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	A MIDI playback, recording and live performance tool
+
+BUILD_DEPENDS=	libumidi>=2.0.2:${PORTSDIR}/audio/libumidi
 
 LIB_DEPENDS=	umidi20.1:${PORTSDIR}/audio/libumidi
 
