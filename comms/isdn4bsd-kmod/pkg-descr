@@ -1,0 +1,4 @@
+ISDN4BSD is a kernel driver for various ISDN and analog phone adapters.
+ISDN4BSD fully supports CAPI2.0.
+
+WWW: http://www.selasky.org/hans_petter/isdn4bsd/
