@@ -110,11 +110,11 @@ PLIST_SUB+= I4B_NOTCPIP_MONITOR=YES
 .endif
 
 do-configure:
-	${MAKE} -C ${WRKSRC} -f ${WRKSRC}/Makefile \
+	${MAKE} ${MAKE_ARGS} -C ${WRKSRC} -f ${WRKSRC}/Makefile \
 		${PLIST_SUB} configure
 
 do-install:
-	${MAKE} -C ${WRKSRC} -f ${WRKSRC}/Makefile install
+	${MAKE} ${MAKE_ARGS} -C ${WRKSRC} -f ${WRKSRC}/Makefile install
 
 .if ${OSVERSION} < 800000
 IGNORE=		requires FreeBSD 8.0-RELEASE or later

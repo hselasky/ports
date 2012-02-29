@@ -93,11 +93,11 @@ PLIST_SUB+= HAVE_NO_MAN=YES
 .endif
 
 do-configure:
-	${MAKE} -C ${WRKSRC} -f ${WRKSRC}/Makefile \
+	${MAKE} ${MAKE_ARGS} -C ${WRKSRC} -f ${WRKSRC}/Makefile \
 		${PLIST_SUB} configure
 
 do-install:
-	${MAKE} -C ${WRKSRC} -f ${WRKSRC}/Makefile install
+	${MAKE} ${MAKE_ARGS} -C ${WRKSRC} -f ${WRKSRC}/Makefile install
 	kldxref ${KMODDIR}
 
 .if ${OSVERSION} < 800000
