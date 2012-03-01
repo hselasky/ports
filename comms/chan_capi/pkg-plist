@@ -1,0 +1,4 @@
+lib/asterisk/modules/chan_capi.so
+etc/asterisk/capi.conf
+etc/asterisk/capi.conf.sample
+

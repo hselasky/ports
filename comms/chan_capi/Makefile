@@ -1,0 +1,47 @@
+# Ports collection makefile for: chan_capi
+# Date created: Feb 29 2012
+# Whom:
+#
+# $FreeBSD$
+#
+
+PORTNAME=	chan_capi
+PORTVERSION=	2.0.1
+CATEGORIES=	comms
+MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
+		http://hselasky.homeunix.org:8192/distfiles/
+
+MAINTAINER=	hselasky@FreeBSD.org
+COMMENT=	CAPI channel driver for the Asterisk PBX
+
+USE_BZIP2=	yes
+
+LICENSE=	BSD
+LIBDIR=		${PREFIX}/lib/asterisk/modules
+ETCDIR=		${PREFIX}/etc/asterisk
+INCLUDEDIR=	${PREFIX}/include
+USE_LDCONFIG=	yes
+MAKE_JOBS_SAFE= yes
+
+LIB_DEPENDS=	capi20.1:${PORTSDIR}/comms/libcapi
+RUN_DEPENDS=	asterisk:${PORTSDIR}/net/asterisk
+
+OPTIONS= \
+		DEBUG "Enable debugging" Off
+
+.include <bsd.port.pre.mk>
+
+MAKE_ARGS+=" PREFIX=${PREFIX}"
+MAKE_ARGS+=" LIBDIR=${LIBDIR}"
+MAKE_ARGS+=" ETCDIR=${ETCDIR}"
+MAKE_ARGS+=" INCLUDEDIR=${INCLUDEDIR}"
+
+.if defined(WITH_DEBUG)
+MAKE_ARGS+=" HAVE_DEBUG=YES"
+.endif
+
+.if ${OSVERSION} < 800000
+IGNORE=		requires FreeBSD 8.0-RELEASE or later
+.endif
+
+.include <bsd.port.post.mk>
