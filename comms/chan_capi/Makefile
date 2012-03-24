@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	chan_capi
-PORTVERSION=	2.0.1
+PORTVERSION=	2.0.2
 CATEGORIES=	comms
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://hselasky.homeunix.org:8192/distfiles/
@@ -14,17 +14,18 @@ MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	CAPI channel driver for the Asterisk PBX
 
+LICENSE=	BSD
+
+LIB_DEPENDS=	capi20.1:${PORTSDIR}/comms/libcapi
+RUN_DEPENDS=	asterisk:${PORTSDIR}/net/asterisk
+
 USE_BZIP2=	yes
 
-LICENSE=	BSD
 LIBDIR=		${PREFIX}/lib/asterisk/modules
 ETCDIR=		${PREFIX}/etc/asterisk
 INCLUDEDIR=	${PREFIX}/include
 USE_LDCONFIG=	yes
 MAKE_JOBS_SAFE= yes
-
-LIB_DEPENDS=	capi20.1:${PORTSDIR}/comms/libcapi
-RUN_DEPENDS=	asterisk:${PORTSDIR}/net/asterisk
 
 OPTIONS= \
 		DEBUG "Enable debugging" Off

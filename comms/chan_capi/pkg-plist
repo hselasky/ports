@@ -1,4 +1,4 @@
+@unexec if cmp -s %D/etc/asterisk/capi.conf %D/etc/asterisk/capi.conf.sample; then rm -f %D/etc/asterisk/capi.conf; fi
+@exec if test ! -e %D/etc/asterisk/capi.conf; then cp -p %D/etc/asterisk/capi.conf.sample %D/etc/asterisk/capi.conf; fi
 lib/asterisk/modules/chan_capi.so
-etc/asterisk/capi.conf
 etc/asterisk/capi.conf.sample
-
