@@ -25,21 +25,22 @@ LIBDIR=		${PREFIX}/lib/asterisk/modules
 ETCDIR=		${PREFIX}/etc/asterisk
 INCLUDEDIR=	${PREFIX}/include
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE= yes
+MAKE_JOBS_SAFE=	yes
 
-OPTIONS= \
-		DEBUG "Enable debugging" Off
+OPTIONS=	DEBUG "Enable debugging" Off
 
-.include <bsd.port.pre.mk>
+.include <bsd.port.options.mk>
 
-MAKE_ARGS+=" PREFIX=${PREFIX}"
-MAKE_ARGS+=" LIBDIR=${LIBDIR}"
-MAKE_ARGS+=" ETCDIR=${ETCDIR}"
-MAKE_ARGS+=" INCLUDEDIR=${INCLUDEDIR}"
+MAKE_ARGS=	PREFIX=${PREFIX} \
+		LIBDIR=${LIBDIR} \
+		ETCDIR=${ETCDIR} \
+	 	INCLUDEDIR=${INCLUDEDIR}
 
 .if defined(WITH_DEBUG)
-MAKE_ARGS+=" HAVE_DEBUG=YES"
+MAKE_ARGS+=	HAVE_DEBUG=YES
 .endif
+
+.include <bsd.port.pre.mk>
 
 .if ${OSVERSION} < 800000
 IGNORE=		requires FreeBSD 8.0-RELEASE or later
