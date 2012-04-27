@@ -2,7 +2,7 @@
 # Date created: 21 March 2010
 # Whom:         
 #
-# $FreeBSD: ports/multimedia/cuse4bsd-kmod/Makefile,v 1.7 2011/03/27 10:27:17 kwm Exp $
+# $FreeBSD$
 #
 
 PORTNAME=	cuse4bsd-kmod

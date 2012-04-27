@@ -2,7 +2,7 @@
 # Date created: 13 January 2010
 # Whom:         Andrew Thompson <thompsa@FreeBSD.org>
 #
-# $FreeBSD: ports/multimedia/webcamd/Makefile,v 1.15 2011/04/28 19:48:46 kwm Exp $
+# $FreeBSD$
 #
 
 PORTNAME=	webcamd

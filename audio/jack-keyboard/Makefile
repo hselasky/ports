@@ -2,7 +2,7 @@
 # Date created:		2007-01-23
 # Whom:			trasz <trasz@pin.if.uz.zgora.pl>
 #
-# $FreeBSD: ports/audio/jack-keyboard/Makefile,v 1.23 2011/06/23 12:14:17 kwm Exp $
+# $FreeBSD$
 #
 
 PORTNAME=	jack-keyboard

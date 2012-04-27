@@ -2,7 +2,7 @@
 # Date created: 21 June 2011
 # Whom:		Hans Petter Selasky <hselasky@FreeBSD.org>
 #
-# $FreeBSD: ports/audio/midipp/Makefile,v 1.1 2011/06/23 12:54:46 kwm Exp $
+# $FreeBSD$
 #
 
 PORTNAME=	midipp
