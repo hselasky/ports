@@ -15,26 +15,25 @@ MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	ISDN4BSD utilities
 
-USE_BZIP2=	yes
-
 LICENSE=	BSD
+
+LIB_DEPENDS=    capi20.1:${PORTSDIR}/comms/libcapi
+
+USE_BZIP2=	yes
 BINDIR=		${PREFIX}/sbin
 LIBDIR=		${PREFIX}/lib
 INCLUDEDIR=	${PREFIX}/include
 MANDIR=		${PREFIX}/man/man
+NO_MANCOMPRESS=	yes
 USE_LDCONFIG=	yes
 MAKE_JOBS_SAFE= yes
 
-LIB_DEPENDS=    capi20.1:${PORTSDIR}/comms/libcapi
+MAKE_ARGS=	LOCALBASE=${LOCALBASE} \
+		BINDIR=${BINDIR} \
+		LIBDIR=${LIBDIR} \
+		MANDIR=${MANDIR}
 
-PLIST_SUB= \
-		BINDIR="${BINDIR}" \
-		LIBDIR="${LIBDIR}" \
-		INCLUDEDIR="${INCLUDEDIR}" \
-		MANDIR="${MANDIR}"
-
-OPTIONS= \
-		CAPIMONITOR "Build capimonitor utility" Off \
+OPTIONS=	CAPIMONITOR "Build capimonitor utility" Off \
 		CAPITEST "Build capitest utility" On \
 		DEBUG "Build with debugging support" Off \
 		DTMFDECODE "Build dtmfdecode utility" Off \
@@ -49,7 +48,6 @@ OPTIONS= \
 		ISDNTELCTL "Build isdntelctl utility" Off \
 		ISDNTEST "Build isdntest utility" Off \
 		ISDNTRACE "Build isdntrace utility" On \
-		MAN "Install manual pages" On \
 		NOTCPIP_MONITOR "No TCP/IP ISDND monitor" On \
 		WITHOUT_CURSES "Build utilities without curses" Off \
 
@@ -58,60 +56,98 @@ OPTIONS= \
 MAKE_ARGS+=" HAVE_UTILS=YES"
 
 .if defined(WITH_CAPIMONITOR)
-PLIST_SUB+= HAVE_CAPIMONITOR=YES
+I4B_CONFIG+=	HAVE_CAPIMONITOR=YES
+PLIST_FILES+=	sbin/capimonitor
 .endif
+
 .if defined(WITH_CAPITEST)
-PLIST_SUB+= HAVE_CAPITEST=YES
+I4B_CONFIG+=	HAVE_CAPITEST=YES
+MAN8+=		capitest.8.gz
+PLIST_FILES+=	sbin/capitest
 .endif
+
 .if defined(WITH_DTMFDECODE)
-PLIST_SUB+= HAVE_DTMFDECODE=YES
+I4B_CONFIG+=	HAVE_DTMFDECODE=YES
+MAN1+=		dtmfdecode.1.gz
+PLIST_FILES+=	sbin/dtmfdecode
 .endif
+
 .if defined(WITH_G711CONV)
-PLIST_SUB+= HAVE_G711CONV=YES
+I4B_CONFIG+=	HAVE_G711CONV=YES
+MAN1+=		g711conv.1.gz
+PLIST_FILES+=	sbin/g711conv
 .endif
+
 .if defined(WITH_ISDNCONFIG)
-PLIST_SUB+= HAVE_ISDNCONFIG=YES
+I4B_CONFIG+=	HAVE_ISDNCONFIG=YES
+MAN8+=		isdnconfig.8.gz
+PLIST_FILES+=	sbin/isdnconfig
 .endif
+
 .if defined(WITH_ISDNDEBUG)
-PLIST_SUB+= HAVE_ISDNDEBUG=YES
+I4B_CONFIG+=	HAVE_ISDNDEBUG=YES
+MAN8+=		isdndebug.8.gz
+PLIST_FILES+=	sbin/isdndebug
 .endif
+
 .if defined(WITH_ISDNDECODE)
-PLIST_SUB+= HAVE_ISDNDECODE=YES
+I4B_CONFIG+=	HAVE_ISDNDECODE=YES
+MAN8+=		isdndecode.8.gz
+PLIST_FILES+=	sbin/isdndecode
 .endif
+
 .if defined(WITH_ISDND)
-PLIST_SUB+= HAVE_ISDND=YES
+I4B_CONFIG+=	HAVE_ISDND=YES
+MAN5+=		isdnd.acct.5.gz isdnd.rates.5.gz isdnd.rc.5.gz
+MAN8+=		isdnd.8.gz
+PLIST_FILES+=	sbin/isdnd
 .endif
+
 .if defined(WITH_ISDNMONITOR)
-PLIST_SUB+= HAVE_ISDNMONITOR=YES
+I4B_CONFIG+=	HAVE_ISDNMONITOR=YES
+MAN8+=		isdnmonitor.8.gz
+PLIST_FILES+=	sbin/isdnmonitor
 .endif
+
 .if defined(WITH_ISDNTELCTL)
-PLIST_SUB+= HAVE_ISDNTELCTL=YES
+I4B_CONFIG+=	HAVE_ISDNTELCTL=YES
+MAN8+=		isdntelctl.8.gz
+PLIST_FILES+=	sbin/isdntelctl
 .endif
+
 .if defined(WITH_ISDNTEL)
-PLIST_SUB+= HAVE_ISDNTEL=YES
+I4B_CONFIG+=	HAVE_ISDNTEL=YES
+MAN8+=		isdntel.8.gz
+PLIST_FILES+=	sbin/isdntel
 .endif
+
 .if defined(WITH_ISDNTEST)
-PLIST_SUB+= HAVE_ISDNTEST=YES
+I4B_CONFIG+=	HAVE_ISDNTEST=YES
+MAN8+=		isdntest.8.gz
+PLIST_FILES+=	sbin/isdntest
 .endif
+
 .if defined(WITH_ISDNTRACE)
-PLIST_SUB+= HAVE_ISDNTRACE=YES
+I4B_CONFIG+=	HAVE_ISDNTRACE=YES
+MAN8+=		isdntrace.8.gz
+PLIST_FILES+=	sbin/isdntrace
 .endif
-.if !defined(WITH_MAN)
-PLIST_SUB+= HAVE_NO_MAN=YES
-.endif
+
 .if defined(WITH_EXTERNAL_MONITOR)
-PLIST_SUB+= I4B_EXTERNAL_MONITOR=YES
+I4B_CONFIG+=	I4B_EXTERNAL_MONITOR=YES
 .endif
+
 .if defined(WITH_WITHOUT_CURSES)
-PLIST_SUB+= I4B_WITHOUT_CURSES=YES
+I4B_CONFIG+=	I4B_WITHOUT_CURSES=YES
 .endif
+
 .if defined(WITH_NOTCPIP_MONITOR)
-PLIST_SUB+= I4B_NOTCPIP_MONITOR=YES
+I4B_CONFIG+=	I4B_NOTCPIP_MONITOR=YES
 .endif
 
 do-configure:
 	${MAKE} ${MAKE_ARGS} -C ${WRKSRC} -f ${WRKSRC}/Makefile \
-		${PLIST_SUB} configure
+		${I4B_CONFIG} configure
 
 do-install:
 	${MAKE} ${MAKE_ARGS} -C ${WRKSRC} -f ${WRKSRC}/Makefile install

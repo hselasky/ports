@@ -16,6 +16,7 @@ COMMENT=	CAPI channel driver for the Asterisk PBX
 
 LICENSE=	BSD
 
+BUILD_DEPENDS=	asterisk:${PORTSDIR}/net/asterisk
 LIB_DEPENDS=	capi20.1:${PORTSDIR}/comms/libcapi
 RUN_DEPENDS=	asterisk:${PORTSDIR}/net/asterisk
 
