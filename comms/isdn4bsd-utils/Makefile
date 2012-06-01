@@ -31,7 +31,8 @@ MAKE_JOBS_SAFE= yes
 MAKE_ARGS=	LOCALBASE=${LOCALBASE} \
 		BINDIR=${BINDIR} \
 		LIBDIR=${LIBDIR} \
-		MANDIR=${MANDIR}
+		MANDIR=${MANDIR} \
+		INCLUDEDIR=${INCLUDEDIR}
 
 OPTIONS=	CAPIMONITOR "Build capimonitor utility" Off \
 		CAPITEST "Build capitest utility" On \
