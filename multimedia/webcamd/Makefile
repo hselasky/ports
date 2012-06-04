@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	webcamd
-PORTVERSION=	3.5.0.2
+PORTVERSION=	3.5.1.1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://hselasky.homeunix.org:8192/distfiles/
@@ -15,7 +15,7 @@ MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	A port of Linux USB webcam and DVB drivers into userspace
 
 BUILD_DEPENDS=	v4l_compat>=1.0.20100321:${PORTSDIR}/multimedia/v4l_compat \
-		cuse4bsd-kmod>=0.1.13:${PORTSDIR}/multimedia/cuse4bsd-kmod
+		cuse4bsd-kmod>=0.1.24:${PORTSDIR}/multimedia/cuse4bsd-kmod
 LIB_DEPENDS=	v4l1.0:${PORTSDIR}/multimedia/libv4l \
 		cuse4bsd.1:${PORTSDIR}/multimedia/cuse4bsd-kmod
 
