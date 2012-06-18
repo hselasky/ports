@@ -1,5 +1,5 @@
 #!/bin/sh
-# $FreeBSD: ports/multimedia/webcamd/files/webcamd.in,v 1.6 2011/04/21 09:06:26 kwm Exp $
+# $FreeBSD$
 #
 # PROVIDE: webcamd
 # REQUIRE: DAEMON
@@ -15,7 +15,7 @@ hald_enable=${hald_enable-"NO"}
 . /etc/rc.subr
 
 name=webcamd
-rcvar=`set_rcvar`
+rcvar=webcamd_enable
 iface=${3-0}
 command=%%PREFIX%%/sbin/webcamd
 command_args="-B -U webcamd -G webcamd"
