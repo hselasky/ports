@@ -39,6 +39,8 @@ OPTIONS=	DEBUG "Build with debugging support" Off
 IGNORE=		requires FreeBSD 8.0-RELEASE or later
 .endif
 
+MAKE_ARGS+=" PTHREAD_LIBS=${PTHREAD_LIBS}"
+
 .if defined(WITH_DEBUG)
 MAKE_ARGS+=" HAVE_DEBUG=YES"
 .endif

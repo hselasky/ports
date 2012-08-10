@@ -24,6 +24,8 @@ OPTIONS=	DEBUG "Build with debugging support" Off \
 
 .include <bsd.port.options.mk>
 
+MAKE_ARGS+=" PTHREAD_LIBS=${PTHREAD_LIBS}"
+
 .if defined(WITH_JACK)
 MAKE_ARGS+=" HAVE_JACK=YES"
 LIB_DEPENDS=	jack.0:${PORTSDIR}/audio/jack
