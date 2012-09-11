@@ -46,7 +46,7 @@ OPTIONS=	DEBUG "Build with debugging support" Off \
 		MAN "Intall manual pages" On \
 		RBCH "Build RBCH driver" Off \
 		SPPP "Build SPPP driver" Off \
-		TEL "Build TEL driver" Off \
+		TEL "Build TEL driver" On \
 		TRACE "Build TRACE driver" On \
 		YEALINK "Build YEALINK driver" On
 
