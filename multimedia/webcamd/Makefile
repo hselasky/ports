@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	webcamd
-PORTVERSION=	3.7.0.2
+PORTVERSION=	3.7.0.3
 CATEGORIES=	multimedia
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://hselasky.homeunix.org:8192/distfiles/
@@ -26,7 +26,7 @@ USE_BZIP2=	yes
 USE_LDCONFIG=	yes
 MAKE_JOBS_SAFE=	yes
 MANCOMPRESSED=	yes
-MAN4=		a800.4 ce6230.4 dtv5100.4 gl861.4 mr800.4 pwc.4 sq905c.4 \
+MAN4=		a800.4 ce6230.4 dtv5100.4 gl861.4 mr800.4 pwcusb.4 sq905c.4 \
 		usbvision.4 af9005.4 cinergy.4 dw2102.4 gp8psk.4 \
 		mr97310a.4 s2255.4 stk014.4 uvc.4 af9015.4 conex.4 \
 		ec168.4 hdpvr.4 nova-t.4 se401.4 stv06xx.4 vc032x.4 \
