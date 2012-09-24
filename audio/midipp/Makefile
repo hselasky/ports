@@ -1,9 +1,5 @@
-# Ports collection makefile for: midipp
-# Date created: 21 June 2011
-# Whom:		Hans Petter Selasky <hselasky@FreeBSD.org>
-#
+# Created by: Hans Petter Selasky <hselasky@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	midipp
 PORTVERSION=	1.0.16
