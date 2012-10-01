@@ -18,7 +18,7 @@ name=webcamd
 rcvar=webcamd_enable
 iface=${3-0}
 command=%%PREFIX%%/sbin/webcamd
-command_args="-B -U webcamd -G webcamd $webcamd_flags"
+command_args="-B -U webcamd -G webcamd"
 
 start_precmd="${name}_prestart"
 
