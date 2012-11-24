@@ -19,6 +19,7 @@ LICENSE=	BSD
 
 LIB_DEPENDS=    capi20.1:${PORTSDIR}/comms/libcapi
 
+USE_RC_SUBR=	isdnd
 USE_BZIP2=	yes
 BINDIR=		${PREFIX}/sbin
 LIBDIR=		${PREFIX}/lib
