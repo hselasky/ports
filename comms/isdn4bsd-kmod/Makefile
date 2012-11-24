@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	isdn4bsd-kmod
-PORTVERSION=	2.0.4
+PORTVERSION=	2.0.5
 CATEGORIES=	comms kld
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://hselasky.homeunix.org:8192/distfiles/
