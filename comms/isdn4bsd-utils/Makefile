@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	isdn4bsd-utils
-PORTVERSION=	2.0.5
+PORTVERSION=	2.0.6
 DISTNAME=	isdn4bsd-${PORTVERSION}
 CATEGORIES=	comms kld
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
