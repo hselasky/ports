@@ -1,9 +1,5 @@
-# Ports collection makefile for: webcamd
-# Date created: 13 January 2010
-# Whom:         Andrew Thompson <thompsa@FreeBSD.org>
-#
-# $FreeBSD$
-#
+# Created by: Andrew Thompson <thompsa@FreeBSD.org>
+# $FreeBSD: ports/multimedia/webcamd/Makefile,v 1.28 2013/01/12 20:42:02 svnexp Exp $
 
 PORTNAME=	webcamd
 PORTVERSION=	3.9.0.4
