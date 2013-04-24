@@ -1,0 +1,17 @@
+--- ./Makefile.orig	2013-04-24 07:13:49.000000000 +0000
++++ ./Makefile	2013-04-24 07:15:33.000000000 +0000
+@@ -7,11 +7,11 @@
+ #
+ ###############################################################
+ 
+-CC = gcc
++#CC = gcc
+ 
+-CFLAGS += -O2 -DLINUX -D_GNU_SOURCE -Wall
++CFLAGS += -O2 -DLINUX -D_GNU_SOURCE -Wall -I$(LOCALBASE)/include -L$(LOCALBASE)/lib
+ #CFLAGS += -O2 -DDEBUG -DLINUX -D_GNU_SOURCE -Wall
+-LFLAGS += -lpthread -ldl
++LFLAGS += $(PTHREAD_LIBS)
+ 
+ APP_BINARY=mjpg_streamer
+ OBJECTS=mjpg_streamer.o utils.o

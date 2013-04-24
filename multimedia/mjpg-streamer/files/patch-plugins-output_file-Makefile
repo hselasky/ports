@@ -1,0 +1,18 @@
+--- ./plugins/output_file/Makefile.orig	2013-04-24 07:13:49.000000000 +0000
++++ ./plugins/output_file/Makefile	2013-04-24 07:15:33.000000000 +0000
+@@ -7,12 +7,12 @@
+ #
+ ###############################################################
+ 
+-CC = gcc
++# CC = gcc
+ 
+ OTHER_HEADERS = ../../mjpg_streamer.h ../../utils.h ../output.h ../input.h
+ 
+-CFLAGS += -O2 -DLINUX -D_GNU_SOURCE -Wall -shared -fPIC
+-LFLAGS += -lpthread -ldl
++CFLAGS += -O2 -DLINUX -D_GNU_SOURCE -Wall -shared -fPIC -I/usr/local/include -L$(LOCALBASE)/lib
++LFLAGS += -lpthread
+ 
+ all: output_file.so
+ 
