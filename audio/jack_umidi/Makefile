@@ -1,4 +1,4 @@
-# Created by:  Hans Petter Selasky <hselasky@FreeBSD.org>
+# Created by: Hans Petter Selasky <hselasky@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	jack_umidi
@@ -10,9 +10,9 @@ MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	Daemon that converts a raw MIDI device into a JACK MIDI device
 
-LICENSE=       BSD
+LICENSE=	BSD
 
-LIB_DEPENDS=   jack:${PORTSDIR}/audio/jack
+LIB_DEPENDS=	jack:${PORTSDIR}/audio/jack
 
 USE_BZIP2=	yes
 MAKE_JOBS_SAFE=	yes

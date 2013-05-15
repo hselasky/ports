@@ -1,9 +1,4 @@
-# Ports collection makefile for: cuse4bsd-kmod
-# Date created: 21 March 2010
-# Whom:         
-#
 # $FreeBSD$
-#
 
 PORTNAME=	cuse4bsd-kmod
 PORTVERSION=	0.1.27
@@ -31,17 +26,13 @@ PLIST_SUB=	KMODNAME="${KMODNAME}" \
 		INCLUDEDIR="${INCLUDEDIR}" \
 		MANDIR="${MANDIR}"
 
-OPTIONS=	DEBUG "Build with debugging support" Off
+OPTIONS_DEFINE=	DEBUG
 
-.include <bsd.port.pre.mk>
-
-.if ${OSVERSION} < 800000
-IGNORE=		requires FreeBSD 8.0-RELEASE or later
-.endif
+.include <bsd.port.options.mk>
 
 MAKE_ARGS+=" PTHREAD_LIBS=${PTHREAD_LIBS}"
 
-.if defined(WITH_DEBUG)
+.if ${PORT_OPTIONS:MDEBUG}
 MAKE_ARGS+=" HAVE_DEBUG=YES"
 .endif
 
@@ -50,4 +41,4 @@ do-install:
 	${INSTALL_KLD} ${WRKSRC}/${KMODNAME}.ko ${KMODDIR}
 	kldxref ${KMODDIR}
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>
