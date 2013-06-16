@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	virtual_oss_ctl
-PORTVERSION=	1.0.2
+PORTVERSION=	1.0.3
 CATEGORIES=	audio
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://hselasky.homeunix.org:8192/distfiles/
