@@ -1,0 +1,6 @@
+Virtual OSS is an audio mixing application that multiplexes and
+de-multiplexes a single OSS device into multiple customizable OSS
+compatible devices using Cuse4BSD. These devices can be used to record
+played back audio and mix the individual channels in multiple ways.
+
+WWW: http://www.selasky.org/hans_petter/midistudio
