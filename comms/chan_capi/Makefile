@@ -9,7 +9,7 @@ PORTNAME=	chan_capi
 PORTVERSION=	2.0.3
 CATEGORIES=	comms
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
-		http://hselasky.homeunix.org:8192/distfiles/
+		http://home.selasky.org:8192/distfiles/
 
 MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	CAPI channel driver for the Asterisk PBX

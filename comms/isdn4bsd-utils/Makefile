@@ -10,7 +10,7 @@ PORTVERSION=	2.0.7
 DISTNAME=	isdn4bsd-${PORTVERSION}
 CATEGORIES=	comms kld
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
-		http://hselasky.homeunix.org:8192/distfiles/
+		http://home.selasky.org:8192/distfiles/
 
 MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	ISDN4BSD utilities
