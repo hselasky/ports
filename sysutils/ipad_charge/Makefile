@@ -1,4 +1,4 @@
-# $FreeBSD: sysutils/ipad_charge/Makefile 324384 2013-08-08 09:45:09Z kevlo $
+# $FreeBSD$
 
 PORTNAME=	ipad_charge
 PORTVERSION=	2.0.1
