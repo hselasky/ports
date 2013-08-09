@@ -1,37 +1,27 @@
-# New ports collection makefile for:	ipad_charge
-# Date created:		13 January 2012
-# Whom:			Kevin Lo <kevlo@FreeBSD.org>
-#
-# $FreeBSD$
-#
+# $FreeBSD: sysutils/ipad_charge/Makefile 324384 2013-08-08 09:45:09Z kevlo $
 
 PORTNAME=	ipad_charge
 PORTVERSION=	2.0.1
 CATEGORIES=	sysutils
-DISTFILES=
+DISTFILES=	# empty
 
 MAINTAINER=	kevlo@FreeBSD.org
-COMMENT=	A generic iPad USB charging utility
+COMMENT=	Generic iPad USB charging utility
 
 LICENSE=	BSD
 
+PLIST_FILES=	etc/devd/ipad_charge.conf
 USE_RC_SUBR=	ipad_charge
-
-.include <bsd.port.pre.mk>
-
-.if ${OSVERSION} < 800000
-IGNORE=		requires FreeBSD 8.0-RELEASE or later
-.endif
-
-do-build:
+SUB_FILES=	ipad_charge.conf pkg-message
+NO_BUILD=	yes
 
 do-install:
+	@${MKDIR} ${PREFIX}/etc/devd
+	@${INSTALL_DATA} ${WRKDIR}/ipad_charge.conf ${PREFIX}/etc/devd
 
 post-install:
-	@${MKDIR} ${PREFIX}/etc/devd
-	@${SED} -e "s|%%PREFIX%%|${PREFIX}|g" \
-		< ${FILESDIR}/ipad_charge.conf.in > ${WRKDIR}/ipad_charge.conf
-	${INSTALL_DATA} "${WRKDIR}/ipad_charge.conf" ${PREFIX}/etc/devd
+	@${ECHO_MSG}
 	@${CAT} ${PKGMESSAGE}
+	@${ECHO_MSG}
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

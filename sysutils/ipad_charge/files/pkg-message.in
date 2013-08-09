@@ -1,6 +1,6 @@
 *********************************************************************
 1) add ipad_charge_enable="YES" and optionally
- ipad_charge_action="ON" (default) or "OFF" .
+   ipad_charge_action="ON" (default) or "OFF" .
 
 to your /etc/rc.conf
 
