@@ -8,18 +8,16 @@ MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://home.selasky.org:8192/distfiles/
 
 MAINTAINER=	hselasky@FreeBSD.org
-COMMENT=	A MIDI playback, recording, and live performance tool
-
-BUILD_DEPENDS=	libumidi>=2.0.7:${PORTSDIR}/audio/libumidi
-
-LIB_DEPENDS=	umidi20.1:${PORTSDIR}/audio/libumidi
+COMMENT=	MIDI playback, recording, and live performance tool
 
 LICENSE=	BSD
+
+BUILD_DEPENDS=	libumidi>=2.0.7:${PORTSDIR}/audio/libumidi
+LIB_DEPENDS=	libumidi20.so:${PORTSDIR}/audio/libumidi
+
 USE_BZIP2=	yes
 
 USE_QT4=	gui qmake_build moc_build rcc_build network
-
-MAKE_JOBS_SAFE=	yes
 
 QMAKE_MIDIPP=	${QMAKE} -unix PREFIX=${PREFIX} -o
 
