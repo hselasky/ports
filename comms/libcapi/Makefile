@@ -22,9 +22,12 @@ INCLUDEDIR=	${PREFIX}/include
 USE_LDCONFIG=	yes
 MAKE_JOBS_SAFE=	yes
 
-OPTIONS=	BINTEC "Build with BinTec support" Off \
-		DEBUG "Enable debugging" Off \
-		MAN "Install manual pages" On
+OPTIONS_DEFINE= BINTEC DEBUG MAN
+OPTIONS_DEFAULT=MAN
+
+BINTEC_DESC=Build with BinTec support
+DEBUG_DESC=Enable debugging
+MAN_DESC=Install manual pages
 
 .include <bsd.port.options.mk>
 

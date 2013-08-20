@@ -28,7 +28,9 @@ INCLUDEDIR=	${PREFIX}/include
 USE_LDCONFIG=	yes
 MAKE_JOBS_SAFE=	yes
 
-OPTIONS=	DEBUG "Enable debugging" Off
+OPTIONS_DEFINE=	DEBUG
+
+DEBUG_DESC=Enable debugging
 
 .include <bsd.port.options.mk>
 

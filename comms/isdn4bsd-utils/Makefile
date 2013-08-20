@@ -35,23 +35,31 @@ MAKE_ARGS=	LOCALBASE=${LOCALBASE} \
 		MANDIR=${MANDIR} \
 		INCLUDEDIR=${INCLUDEDIR}
 
-OPTIONS=	CAPIMONITOR "Build capimonitor utility" Off \
-		CAPITEST "Build capitest utility" On \
-		DEBUG "Build with debugging support" Off \
-		DTMFDECODE "Build dtmfdecode utility" Off \
-		EXTERNAL_MONITOR "External ISDND monitor" Off \
-		G711CONV "Build g711conv utility" Off \
-		ISDNCONFIG "Build isdnconfig utility" On \
-		ISDND "Build isdnd utility" Off \
-		ISDNDEBUG "Build isdndebug utility" Off \
-		ISDNDECODE "Build isdndecode utility" On \
-		ISDNMONITOR "Build isdnmonitor utility" Off \
-		ISDNTEL "Build isdntel utility" Off \
-		ISDNTELCTL "Build isdntelctl utility" Off \
-		ISDNTEST "Build isdntest utility" Off \
-		ISDNTRACE "Build isdntrace utility" On \
-		NOTCPIP_MONITOR "No TCP/IP ISDND monitor" On \
-		WITHOUT_CURSES "Build utilities without curses" Off \
+OPTIONS_DEFINE= CAPIMONITOR CAPITEST DEBUG DTMFDECODE EXTERNAL_MONITOR \
+    G711CONV ISDNCONFIG ISDND ISDNDEBUG ISDNDECODE ISDNMONITOR \
+    ISDNTEL ISDNTELCTL ISDNTEST ISDNTRACE NOTCPIP_MONITOR \
+    WITHOUT_CURSES
+
+OPTIONS_DEFAULT= CAPITEST ISDNCONFIG ISDNDECODE \
+    ISDNTRACE NOTCPIP_MONITOR
+
+CAPIMONITOR_DESC=Build capimonitor utility
+CAPITEST_DESC=Build capitest utility
+DEBUG_DESC=Build with debugging support
+DTMFDECODE_DESC=Build dtmfdecode utility
+EXTERNAL_MONITOR_DESC=External ISDND monitor
+G711CONV_DESC=Build g711conv utility
+ISDNCONFIG_DESC=Build isdnconfig utility
+ISDNDEBUG_DESC=Build isdndebug utility
+ISDNDECODE_DESC=Build isdndecode utility
+ISDND_DESC=Build isdnd utility
+ISDNMONITOR_DESC=Build isdnmonitor utility
+ISDNTELCTL_DESC=Build isdntelctl utility
+ISDNTEL_DESC=Build isdntel utility
+ISDNTEST_DESC=Build isdntest utility
+ISDNTRACE_DESC=Build isdntrace utility
+NOTCPIP_MONITOR_DESC=No TCP/IP ISDND monitor
+WITHOUT_CURSES_DESC=Build utilities without curses
 
 .include <bsd.port.pre.mk>
 

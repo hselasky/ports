@@ -37,18 +37,23 @@ I4B_CONFIG=	KMODNAME="${KMODNAME}" \
 PLIST_SUB=	KMODDIR="${KMODDIR}" \
 		KMODNAME="${KMODNAME}"
 
-OPTIONS=	DEBUG "Build with debugging support" Off \
-		HFC "Build HFC-XXX driver" On \
-		ING "Build ING driver" Off \
-		IPR "Build IPR driver" Off \
-		IPR_VJ "Build IPR driver with VJ support" Off \
-		LOOP "Build loopback test driver" Off \
-		MAN "Intall manual pages" On \
-		RBCH "Build RBCH driver" Off \
-		SPPP "Build SPPP driver" Off \
-		TEL "Build TEL driver" On \
-		TRACE "Build TRACE driver" On \
-		YEALINK "Build YEALINK driver" On
+OPTIONS_DEFINE= DEBUG HFC ING IPR IPR_VJ LOOP MAN \
+    RBCH SPPP TEL TRACE YEALINK
+
+OPTIONS_DEFAULT= HFC MAN TEL TRACE YEALINK
+
+DEBUG_DESC=Build with debugging support
+HFC_DESC=Build HFC-XXX driver
+ING_DESC=Build ING driver
+IPR_DESC=Build IPR driver
+IPR_VJ_DESC=Build IPR driver with VJ support
+LOOP_DESC=Build loopback test driver
+MAN_DESC=Intall manual pages
+RBCH_DESC=Build RBCH driver
+SPPP_DESC=Build SPPP driver
+TEL_DESC=Build TEL driver
+TRACE_DESC=Build TRACE driver
+YEALINK_DESC=Build YEALINK driver
 
 .include <bsd.port.options.mk>
 
