@@ -19,6 +19,7 @@ LICENSE=	BSD
 
 LIB_DEPENDS=	capi20.1:${PORTSDIR}/comms/libcapi
 
+SSP_UNSAFE=	kernel module does not support ssp
 USE_BZIP2=	yes
 KMODDIR=	/boot/modules
 KMODNAME=	i4b
@@ -55,6 +56,7 @@ TEL_DESC=Build TEL driver
 TRACE_DESC=Build TRACE driver
 YEALINK_DESC=Build YEALINK driver
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 MAKE_ARGS+=	HAVE_KMOD=YES
