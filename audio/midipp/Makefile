@@ -22,10 +22,8 @@ USE_QT4=	gui qmake_build moc_build rcc_build network
 
 QMAKE_MIDIPP=	${QMAKE} -unix PREFIX=${PREFIX} -o
 
-.include <bsd.port.pre.mk>
-
 do-configure:
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} \
 		${QMAKE_MIDIPP} Makefile ${PORTNAME}.pro
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>
