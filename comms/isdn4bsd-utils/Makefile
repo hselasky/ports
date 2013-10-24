@@ -21,6 +21,7 @@ LIB_DEPENDS=    capi20.1:${PORTSDIR}/comms/libcapi
 
 USE_RC_SUBR=	isdnd
 USE_BZIP2=	yes
+NO_STAGE=	yes
 BINDIR=		${PREFIX}/sbin
 LIBDIR=		${PREFIX}/lib
 INCLUDEDIR=	${PREFIX}/include

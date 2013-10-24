@@ -21,6 +21,7 @@ LIB_DEPENDS=	capi20.1:${PORTSDIR}/comms/libcapi
 
 SSP_UNSAFE=	kernel module does not support ssp
 USE_BZIP2=	yes
+NO_STAGE=	yes
 KMODDIR=	/boot/modules
 KMODNAME=	i4b
 BINDIR=		${PREFIX}/sbin

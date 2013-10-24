@@ -21,6 +21,7 @@ LIB_DEPENDS=	capi20.1:${PORTSDIR}/comms/libcapi
 RUN_DEPENDS=	asterisk:${PORTSDIR}/net/asterisk
 
 USE_BZIP2=	yes
+NO_STAGE=	yes
 
 LIBDIR=		${PREFIX}/lib/asterisk/modules
 ETCDIR=		${PREFIX}/etc/asterisk

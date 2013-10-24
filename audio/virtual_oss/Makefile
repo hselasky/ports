@@ -17,6 +17,7 @@ BUILD_DEPENDS=	cuse4bsd-kmod>=0.1.24:${PORTSDIR}/multimedia/cuse4bsd-kmod
 LIB_DEPENDS=	cuse4bsd.1:${PORTSDIR}/multimedia/cuse4bsd-kmod
 
 USE_BZIP2=	yes
+NO_STAGE=	yes
 
 PLIST_FILES=	sbin/virtual_oss
 
