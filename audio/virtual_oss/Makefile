@@ -21,8 +21,6 @@ NO_STAGE=	yes
 
 PLIST_FILES=	sbin/virtual_oss
 
-.include <bsd.port.options.mk>
-
 MAKE_ARGS+=" PTHREAD_LIBS=${PTHREAD_LIBS}"
 
 .include <bsd.port.mk>
