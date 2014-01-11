@@ -39,15 +39,15 @@ MAKE_ARGS=	HAVE_UTILS=YES \
 PLIST_FILES=	include/capi20.h lib/libcapi20.a lib/libcapi20.so \
 		lib/libcapi20.so.1
 
-.if defined(WITH_BINTEC)
+.if ${PORT_OPTIONS:MBINTEC}
 MAKE_ARGS+=	HAVE_BINTEC=YES
 .endif
 
-.if defined(WITH_DEBUG)
+.if ${PORT_OPTIONS:MDEBUG}
 MAKE_ARGS+=	HAVE_DEBUG=YES
 .endif
 
-.if defined(WITH_MAN)
+.if ${PORT_OPTIONS:MMAN}
 MAKE_ARGS+=	HAVE_MAN=YES
 NO_MANCOMPRESS=	yes
 MAN3=	capi.3.gz capi20.3.gz capi20_be_alloc_bintec.3.gz \
