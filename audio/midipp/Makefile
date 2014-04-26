@@ -15,8 +15,7 @@ LICENSE=	BSD2CLAUSE
 BUILD_DEPENDS=	libumidi>=2.0.12:${PORTSDIR}/audio/libumidi
 LIB_DEPENDS=	libumidi20.so:${PORTSDIR}/audio/libumidi
 
-USES=		qmake
-USE_BZIP2=	yes
+USES=		qmake tar:bzip2
 USE_QT4=	gui moc_build rcc_build network
 
 .include <bsd.port.mk>
