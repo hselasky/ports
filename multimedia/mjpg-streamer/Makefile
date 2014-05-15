@@ -13,7 +13,7 @@ MAINTAINER=	hselasky@freebsd.org
 COMMENT=	A Video4Linux webcam HTTP MPEG streamer
 
 BUILD_DEPENDS=	${LOCALBASE}/include/linux/videodev.h:${PORTSDIR}/multimedia/v4l_compat
-LIB_DEPENDS=	jpeg.11:${PORTSDIR}/graphics/jpeg
+LIB_DEPENDS=	libjpeg.11:${PORTSDIR}/graphics/jpeg
 
 USE_LDCONFIG=	yes
 USE_GMAKE=	yes

@@ -16,7 +16,7 @@ COMMENT=	ISDN CAPI v2.0 library
 
 LICENSE=	BSD
 
-USE_BZIP2=	yes
+USES=		tar:bzip2 uidfix
 NO_STAGE=	yes
 LIBDIR=		${PREFIX}/lib
 INCLUDEDIR=	${PREFIX}/include
