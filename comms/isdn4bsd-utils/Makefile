@@ -20,11 +20,11 @@ LICENSE=	BSD
 LIB_DEPENDS=    capi20.1:${PORTSDIR}/comms/libcapi
 
 USE_RC_SUBR=	isdnd
-USES=		tar:bzip2
-BINDIR=		${STAGEDIR}${PREFIX}/sbin
-LIBDIR=		${STAGEDIR}${PREFIX}/lib
-INCLUDEDIR=	${STAGEDIR}${PREFIX}/include
-MANDIR=		${STAGEDIR}${PREFIX}/man/man
+USES=		tar:bzip2 uidfix
+BINDIR=		${PREFIX}/sbin
+LIBDIR=		${PREFIX}/lib
+INCLUDEDIR=	${PREFIX}/include
+MANDIR=		${PREFIX}/man/man
 NO_MANCOMPRESS=	yes
 USE_LDCONFIG=	yes
 MAKE_JOBS_SAFE= yes
