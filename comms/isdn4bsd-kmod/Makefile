@@ -20,7 +20,7 @@ LICENSE=	BSD
 LIB_DEPENDS=	libcapi20.1:${PORTSDIR}/comms/libcapi
 
 SSP_UNSAFE=	kernel module does not support ssp
-USES=		tar:bzip2
+USES=		kmod tar:bzip2 uidfix
 KMODDIR=	/boot/modules
 KMODNAME=	i4b
 BINDIR=		${STAGEDIR}${PREFIX}/sbin
