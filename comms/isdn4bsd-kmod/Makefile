@@ -23,10 +23,10 @@ SSP_UNSAFE=	kernel module does not support ssp
 USES=		kmod tar:bzip2 uidfix
 KMODDIR=	/boot/modules
 KMODNAME=	i4b
-BINDIR=		${STAGEDIR}${PREFIX}/sbin
-LIBDIR=		${STAGEDIR}${PREFIX}/lib
+BINDIR=		${PREFIX}/sbin
+LIBDIR=		${PREFIX}/lib
 INCLUDEDIR=	${PREFIX}/include
-MANDIR=		${STAGEDIR}${PREFIX}/man/man
+MANDIR=		${PREFIX}/man/man
 MAKE_JOBS_SAFE=	yes
 
 I4B_CONFIG=	KMODNAME="${KMODNAME}" \
