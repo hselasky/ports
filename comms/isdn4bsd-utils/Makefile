@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	isdn4bsd-utils
-PORTVERSION=	2.0.9
+PORTVERSION=	2.0.10
 DISTNAME=	isdn4bsd-${PORTVERSION}
 CATEGORIES=	comms kld
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
@@ -20,12 +20,11 @@ LICENSE=	BSD
 LIB_DEPENDS=    capi20.1:${PORTSDIR}/comms/libcapi
 
 USE_RC_SUBR=	isdnd
-USE_BZIP2=	yes
-NO_STAGE=	yes
-BINDIR=		${PREFIX}/sbin
-LIBDIR=		${PREFIX}/lib
-INCLUDEDIR=	${PREFIX}/include
-MANDIR=		${PREFIX}/man/man
+USES=		tar:bzip2
+BINDIR=		${STAGEDIR}${PREFIX}/sbin
+LIBDIR=		${STAGEDIR}${PREFIX}/lib
+INCLUDEDIR=	${STAGEDIR}${PREFIX}/include
+MANDIR=		${STAGEDIR}${PREFIX}/man/man
 NO_MANCOMPRESS=	yes
 USE_LDCONFIG=	yes
 MAKE_JOBS_SAFE= yes

@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	isdn4bsd-kmod
-PORTVERSION=	2.0.9
+PORTVERSION=	2.0.10
 CATEGORIES=	comms kld
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://home.selasky.org:8192/distfiles/
@@ -17,17 +17,16 @@ COMMENT=	ISDN4BSD kernel module driver for various ISDN and analog phone adapter
 
 LICENSE=	BSD
 
-LIB_DEPENDS=	capi20.1:${PORTSDIR}/comms/libcapi
+LIB_DEPENDS=	libcapi20.1:${PORTSDIR}/comms/libcapi
 
 SSP_UNSAFE=	kernel module does not support ssp
-USE_BZIP2=	yes
-NO_STAGE=	yes
-KMODDIR=	/boot/modules
+USES=		tar:bzip2
+KMODDIR=	${STAGEDIR}/boot/modules
 KMODNAME=	i4b
-BINDIR=		${PREFIX}/sbin
-LIBDIR=		${PREFIX}/lib
-INCLUDEDIR=	${PREFIX}/include
-MANDIR=		${PREFIX}/man/man
+BINDIR=		${STAGEDIR}${PREFIX}/sbin
+LIBDIR=		${STAGEDIR}${PREFIX}/lib
+INCLUDEDIR=	${STAGEDIR}${PREFIX}/include
+MANDIR=		${STAGEDIR}${PREFIX}/man/man
 MAKE_JOBS_SAFE=	yes
 
 I4B_CONFIG=	KMODNAME="${KMODNAME}" \
@@ -57,7 +56,6 @@ TEL_DESC=Build TEL driver
 TRACE_DESC=Build TRACE driver
 YEALINK_DESC=Build YEALINK driver
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 MAKE_ARGS+=	HAVE_KMOD=YES
