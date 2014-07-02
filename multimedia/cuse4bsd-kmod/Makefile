@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	cuse4bsd-kmod
-PORTVERSION=	0.1.33
+PORTVERSION=	0.1.35
 PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
