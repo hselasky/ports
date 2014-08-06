@@ -23,10 +23,11 @@ INCLUDEDIR=	${PREFIX}/include
 USE_LDCONFIG=	yes
 MAKE_JOBS_SAFE=	yes
 
-OPTIONS_DEFINE= BINTEC DEBUG MAN
+OPTIONS_DEFINE= BINTEC CLIENT DEBUG MAN
 OPTIONS_DEFAULT=MAN
 
 BINTEC_DESC=Build with BinTec support
+CLIENT_DESC=Build with remote CAPI support
 DEBUG_DESC=Enable debugging
 MAN_DESC=Install manual pages
 
@@ -43,6 +44,10 @@ PLIST_FILES=	include/capi20.h lib/libcapi20.a lib/libcapi20.so \
 MAKE_ARGS+=	HAVE_BINTEC=YES
 .endif
 
+.if ${PORT_OPTIONS:MCLIENT}
+MAKE_ARGS+=	HAVE_CAPI_CLIENT=YES
+.endif
+
 .if ${PORT_OPTIONS:MDEBUG}
 MAKE_ARGS+=	HAVE_DEBUG=YES
 .endif
@@ -50,7 +55,7 @@ MAKE_ARGS+=	HAVE_DEBUG=YES
 .if ${PORT_OPTIONS:MMAN}
 MAKE_ARGS+=	HAVE_MAN=YES
 NO_MANCOMPRESS=	yes
-MAN3=	capi.3.gz capi20.3.gz capi20_be_alloc_bintec.3.gz \
+MAN3=	capi.3.gz capi20.3.gz capi20_be_alloc_client.3.gz capi20_be_alloc_bintec.3.gz \
 	capi20_be_alloc_i4b.3.gz capi20_be_free.3.gz capi20_command_pack.3.gz \
 	capi20_command_unpack.3.gz capi20_decode.3.gz capi20_encode.3.gz \
 	capi20_fileno.3.gz capi20_get_errstr.3.gz capi20_get_manufacturer.3.gz \
