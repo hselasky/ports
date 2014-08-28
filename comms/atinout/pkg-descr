@@ -1,0 +1,7 @@
+Atinout is a program that reads a list of AT commands. It sends those
+commands one by one to the modem, waiting for the final result code
+for the currently executing command before continuing with the next
+command in the list. The output from the commands is captured.
+
+WWW:	http://atinout.sourceforge.net
+
