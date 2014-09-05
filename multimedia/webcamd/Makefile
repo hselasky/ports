@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	webcamd
-PORTVERSION=	3.16.0.1
+PORTVERSION=	3.17.0.2
 CATEGORIES=	multimedia
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://home.selasky.org:8192/distfiles/
@@ -10,10 +10,8 @@ MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	A port of Linux USB webcam and DVB drivers into userspace
 
-BUILD_DEPENDS=	v4l_compat>=1.0.20100321:${PORTSDIR}/multimedia/v4l_compat \
-		cuse4bsd-kmod>=0.1.31:${PORTSDIR}/multimedia/cuse4bsd-kmod
-LIB_DEPENDS=	libv4l1.so:${PORTSDIR}/multimedia/libv4l \
-		libcuse4bsd.so:${PORTSDIR}/multimedia/cuse4bsd-kmod
+BUILD_DEPENDS=	v4l_compat>=1.0.20100321:${PORTSDIR}/multimedia/v4l_compat
+LIB_DEPENDS=	libv4l1.so:${PORTSDIR}/multimedia/libv4l
 
 LICENSE=	GPLv2
 
@@ -23,15 +21,16 @@ USE_LDCONFIG=	yes
 
 LIBDIR=		${PREFIX}/lib
 
-OPTIONS_DEFINE=	DEBUG HAL VT_CLIENT VT_SERVER DVB INPUT RADIO WEBCAM
+OPTIONS_DEFINE=	CUSE DEBUG HAL VT_CLIENT VT_SERVER DVB INPUT RADIO WEBCAM
 OPTIONS_DEFAULT=DVB HAL INPUT RADIO WEBCAM
+CUSE_DESC=	Build with system CUSE library instead of CUSE4BSD from ports
 HAL_DESC=	Build with HAL and DBUS support
 DEBUG_DESC=	Build with debugging support
 VT_CLIENT_DESC=	Build with vTuner client support
 VT_SERVER_DESC=	Build with vTuner server support
 
 DVB_DESC=	Build with USB DVB support (DVB-X, analog TV, ...)
-INPUT_DESC=	Build with USB input support (tablet, joystick, IR, ...)
+INPUT_DESC=	Build with USB input support (tablet, joystick, HID, IR, ...)
 RADIO_DESC=	Build with USB radio support
 WEBCAM_DESC=	Build with USB webcam support (UVC, gspca, ...)
 
@@ -40,10 +39,17 @@ GROUPS=		webcamd
 
 .include <bsd.port.pre.mk>
 
-LIBCUSE=${LIBDIR}/libcuse4bsd.so
-
 MAKE_ARGS+=" HAVE_MAN=YES"
 MAKE_ARGS+=" PTHREAD_LIBS=${PTHREAD_LIBS}"
+
+.if ${PORT_OPTIONS:MCUSE}
+MAKE_ARGS+=" HAVE_CUSE=YES"
+LIBCUSE=/usr/lib/libcuse.so
+.else
+BUILD_DEPENDS+= cuse4bsd-kmod>=0.1.31:${PORTSDIR}/multimedia/cuse4bsd-kmod
+LIB_DEPENDS+= libcuse4bsd.so:${PORTSDIR}/multimedia/cuse4bsd-kmod
+LIBCUSE=${LIBDIR}/libcuse4bsd.so
+.endif
 
 .if ${PORT_OPTIONS:MDVB}
 MAKE_ARGS+=" HAVE_DVB_DRV=YES"
