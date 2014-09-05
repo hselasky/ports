@@ -23,7 +23,7 @@ LIBDIR=		${PREFIX}/lib
 
 OPTIONS_DEFINE=	CUSE DEBUG HAL VT_CLIENT VT_SERVER DVB INPUT RADIO WEBCAM
 OPTIONS_DEFAULT=DVB HAL INPUT RADIO WEBCAM
-CUSE_DESC=	Build with system CUSE library instead of CUSE4BSD from ports
+CUSE_DESC=	Use CUSE and not CUSE4BSD (FreeBSD-11+ only)
 HAL_DESC=	Build with HAL and DBUS support
 DEBUG_DESC=	Build with debugging support
 VT_CLIENT_DESC=	Build with vTuner client support
