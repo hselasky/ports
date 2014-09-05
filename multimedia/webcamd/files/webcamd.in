@@ -66,6 +66,16 @@
 # good. You should instead use "-N" and "-M" index flag.
 # 
 # ================================================================
+# If you are using a remote control you might need to force the
+# protocol by setting the "rc-main.default_protocol" parameter to
+# "lirc" for example. Run webcamd -s to get a description of available
+# protocols.
+# ================================================================
+#
+# webcamd_flags="-m rc-main.default_protocol=lirc"
+# webcamd_N_flags="-m rc-main.default_protocol=lirc"
+#
+# ================================================================
 # Additional Webcamd flags:
 # ================================================================
 #
