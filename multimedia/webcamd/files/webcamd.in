@@ -181,9 +181,9 @@ webcamd_start_instances()
   echo "Starting ${name}."
 
   n=0
+  instance_flags=$(eval "echo \$webcamd_${n}_flags")
   while true
   do
-    instance_flags=$(eval "echo \$webcamd_${n}_flags")
     n=$(expr $n + 1)
     if [ ! "$instance_flags" ]; then
         break
@@ -197,8 +197,13 @@ webcamd_start_instances()
     # launch an instance of webcamd for this configuration entry
     ${command} ${instance_flags} ${webcamd_flags} ${command_args}
 
-    # wait a bit before invoking next instance
-    sleep "$webcamd_startup_delay"
+    # next instance flags
+    instance_flags=$(eval "echo \$webcamd_${n}_flags")
+
+    if [ "$instance_flags" ]; then
+      # wait a bit before invoking next instance
+      sleep "$webcamd_startup_delay"
+    fi
   done
 }
 
