@@ -123,39 +123,34 @@ webcamd_start_devd()
   # Start a single USB device, as this rc.d script was invoked by devd
   # with extra arguments
 
-  if [ "$webcamd_0_flags" ]; then
-    # Keep trying entries from the list in rc.conf file until webcamd
-    # returns 0 - indicating a successful device match
-
-    n=0
-    while true
-    do
-      instance_flags=$(eval "echo \$webcamd_${n}_flags")
-      n=$(expr $n + 1)
-      if [ ! "$instance_flags" ]; then
-	instance_flags="-d ${devd_device}"
-        break
-      fi
-
-      # ignore instance entries which are for "-D" vtuner client
-      if [ "$(webcamd_grep_instance_flags '-D')" ]; then
-        continue
-      fi
-
-      # skip flags if no "-d" option is present
-      if [ ! "$(webcamd_grep_instance_flags '-d')" ]; then
-	continue
-      fi
-
-      # skip if the "-d" option does not match
-      if [ ! "$(webcamd_grep_instance_flags '-d[ 	]*[[:alpha:]]*'${devd_device#ugen})" ]; then
-        continue
-      fi
-
-      # we got a match
+  n=0
+  while true
+  do
+    instance_flags=$(eval "echo \$webcamd_${n}_flags")
+    n=$(expr $n + 1)
+    if [ ! "$instance_flags" ]; then
+      instance_flags="-d ${devd_device}"
       break
-    done
-  fi
+    fi
+
+    # ignore instance entries which are for "-D" vtuner client
+    if [ "$(webcamd_grep_instance_flags '-D')" ]; then
+      continue
+    fi
+
+    # skip flags if no "-d" option is present
+    if [ ! "$(webcamd_grep_instance_flags '-d')" ]; then
+      continue
+    fi
+
+    # skip if the "-d" option does not match
+    if [ ! "$(webcamd_grep_instance_flags '-d[ 	]*[[:alpha:]]*'${devd_device#ugen})" ]; then
+      continue
+    fi
+
+    # we got a match
+    break
+  done
 
   if checkyesno webcamd_devd_starts_unspecified; then
     # Try to start the connected USB device
