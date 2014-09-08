@@ -3,6 +3,7 @@
 #
 # PROVIDE: webcamd
 # REQUIRE: DAEMON LOGIN
+# BEFORE: devd
 # KEYWORD: shutdown
 #
 # ================================================================
