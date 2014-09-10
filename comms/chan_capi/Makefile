@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	chan_capi
-PORTVERSION=	2.0.4
+PORTVERSION=	2.0.5
 CATEGORIES=	comms
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://home.selasky.org:8192/distfiles/
@@ -16,12 +16,14 @@ COMMENT=	CAPI channel driver for the Asterisk PBX
 
 LICENSE=	BSD
 
-BUILD_DEPENDS=	asterisk:${PORTSDIR}/net/asterisk
-LIB_DEPENDS=	libcapi20.1:${PORTSDIR}/comms/libcapi
+BUILD_DEPENDS+=	libcapi>=2.0.2:${PORTSDIR}/comms/libcapi
+BUILD_DEPENDS+=	asterisk:${PORTSDIR}/net/asterisk
+LIB_DEPENDS=	libcapi20.so:${PORTSDIR}/comms/libcapi
 RUN_DEPENDS=	asterisk:${PORTSDIR}/net/asterisk
 
+MTREE_FILE=	${.CURDIR}/pkg-mtree
+
 USES=		tar:bzip2 uidfix
-NO_STAGE=	yes
 
 LIBDIR=		${PREFIX}/lib/asterisk/modules
 ETCDIR=		${PREFIX}/etc/asterisk

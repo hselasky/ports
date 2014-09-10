@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	libcapi
-PORTVERSION=	2.0.1
+PORTVERSION=	2.0.2
 CATEGORIES=	comms
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://home.selasky.org:8192/distfiles/
@@ -17,14 +17,13 @@ COMMENT=	ISDN CAPI v2.0 library
 LICENSE=	BSD
 
 USES=		tar:bzip2 uidfix
-NO_STAGE=	yes
 LIBDIR=		${PREFIX}/lib
 INCLUDEDIR=	${PREFIX}/include
 USE_LDCONFIG=	yes
 MAKE_JOBS_SAFE=	yes
 
 OPTIONS_DEFINE= BINTEC CLIENT DEBUG MAN
-OPTIONS_DEFAULT=MAN
+OPTIONS_DEFAULT=BINTEC CLIENT MAN
 
 BINTEC_DESC=Build with BinTec support
 CLIENT_DESC=Build with remote CAPI support

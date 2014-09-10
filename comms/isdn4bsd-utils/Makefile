@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	isdn4bsd-utils
-PORTVERSION=	2.0.10
+PORTVERSION=	2.0.11
 DISTNAME=	isdn4bsd-${PORTVERSION}
 CATEGORIES=	comms kld
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
@@ -17,15 +17,15 @@ COMMENT=	ISDN4BSD utilities
 
 LICENSE=	BSD
 
-LIB_DEPENDS=    capi20.1:${PORTSDIR}/comms/libcapi
+BUILD_DEPENDS=	libcapi>=2.0.2:${PORTSDIR}/comms/libcapi
+LIB_DEPENDS=    libcapi20.so:${PORTSDIR}/comms/libcapi
 
 USE_RC_SUBR=	isdnd
 USES=		tar:bzip2 uidfix
 BINDIR=		${PREFIX}/sbin
 LIBDIR=		${PREFIX}/lib
-INCLUDEDIR=	${PREFIX}/include
 MANDIR=		${PREFIX}/man/man
-NO_MANCOMPRESS=	yes
+INCLUDEDIR=	${PREFIX}/include
 USE_LDCONFIG=	yes
 MAKE_JOBS_SAFE= yes
 
@@ -35,15 +35,16 @@ MAKE_ARGS=	LOCALBASE=${LOCALBASE} \
 		MANDIR=${MANDIR} \
 		INCLUDEDIR=${INCLUDEDIR}
 
-OPTIONS_DEFINE= CAPIMONITOR CAPITEST DEBUG DTMFDECODE EXTERNAL_MONITOR \
+OPTIONS_DEFINE= CAPIMONITOR CAPISERVER CAPITEST DEBUG DTMFDECODE EXTERNAL_MONITOR \
     G711CONV ISDNCONFIG ISDND ISDNDEBUG ISDNDECODE ISDNMONITOR \
     ISDNTEL ISDNTELCTL ISDNTEST ISDNTRACE NOTCPIP_MONITOR \
     WITHOUT_CURSES
 
-OPTIONS_DEFAULT= CAPITEST ISDNCONFIG ISDNDECODE \
+OPTIONS_DEFAULT= CAPITEST CAPISERVER ISDNCONFIG ISDNDECODE \
     ISDNTRACE NOTCPIP_MONITOR
 
 CAPIMONITOR_DESC=Build capimonitor utility
+CAPISERVER_DESC=Build capiserver utility
 CAPITEST_DESC=Build capitest utility
 DEBUG_DESC=Build with debugging support
 DTMFDECODE_DESC=Build dtmfdecode utility
@@ -63,7 +64,7 @@ WITHOUT_CURSES_DESC=Build utilities without curses
 
 .include <bsd.port.pre.mk>
 
-MAKE_ARGS+=" HAVE_UTILS=YES"
+MAKE_ARGS+=" HAVE_UTILS=YES HAVE_MAN=YES"
 
 .if ${PORT_OPTIONS:MCAPIMONITOR}
 I4B_CONFIG+=	HAVE_CAPIMONITOR=YES
@@ -72,74 +73,82 @@ PLIST_FILES+=	sbin/capimonitor
 
 .if ${PORT_OPTIONS:MCAPITEST}
 I4B_CONFIG+=	HAVE_CAPITEST=YES
-MAN8+=		capitest.8.gz
+PLIST_FILES+=	man/man8/capitest.8.gz
 PLIST_FILES+=	sbin/capitest
+.endif
+
+.if ${PORT_OPTIONS:MCAPISERVER}
+I4B_CONFIG+=	HAVE_CAPISERVER=YES
+PLIST_FILES+=   man/man8/capiserver.8.gz
+PLIST_FILES+=	sbin/capiserver
 .endif
 
 .if ${PORT_OPTIONS:MDTMFDECODE}
 I4B_CONFIG+=	HAVE_DTMFDECODE=YES
-MAN1+=		dtmfdecode.1.gz
+PLIST_FILES+=   man/man8/dtmfdecode.1.gz
 PLIST_FILES+=	sbin/dtmfdecode
 .endif
 
 .if ${PORT_OPTIONS:MG711CONV}
 I4B_CONFIG+=	HAVE_G711CONV=YES
-MAN1+=		g711conv.1.gz
+PLIST_FILES+=   man/man8/g711conv.1.gz
 PLIST_FILES+=	sbin/g711conv
 .endif
 
 .if ${PORT_OPTIONS:MISDNCONFIG}
 I4B_CONFIG+=	HAVE_ISDNCONFIG=YES
-MAN8+=		isdnconfig.8.gz
+PLIST_FILES+=   man/man8/isdnconfig.8.gz
 PLIST_FILES+=	sbin/isdnconfig
 .endif
 
 .if ${PORT_OPTIONS:MISDNDEBUG}
 I4B_CONFIG+=	HAVE_ISDNDEBUG=YES
-MAN8+=		isdndebug.8.gz
+PLIST_FILES+=   man/man8/isdndebug.8.gz
 PLIST_FILES+=	sbin/isdndebug
 .endif
 
 .if ${PORT_OPTIONS:MISDNDECODE}
 I4B_CONFIG+=	HAVE_ISDNDECODE=YES
-MAN8+=		isdndecode.8.gz
+PLIST_FILES+=   man/man8/isdndecode.8.gz
 PLIST_FILES+=	sbin/isdndecode
 .endif
 
 .if ${PORT_OPTIONS:MISDND}
 I4B_CONFIG+=	HAVE_ISDND=YES
-MAN5+=		isdnd.acct.5.gz isdnd.rates.5.gz isdnd.rc.5.gz
-MAN8+=		isdnd.8.gz
+PLIST_FILES+=   man/man8/isdnd.8.gz
+PLIST_FILES+=   man/man5/isdnd.acct.5.gz
+PLIST_FILES+=   man/man5/isdnd.rates.5.gz
+PLIST_FILES+=   man/man5/isdnd.rc.5.gz
 PLIST_FILES+=	sbin/isdnd
 .endif
 
 .if ${PORT_OPTIONS:MISDNMONITOR}
 I4B_CONFIG+=	HAVE_ISDNMONITOR=YES
-MAN8+=		isdnmonitor.8.gz
+PLIST_FILES+=   man/man8/isdnmonitor.8.gz
 PLIST_FILES+=	sbin/isdnmonitor
 .endif
 
 .if ${PORT_OPTIONS:MISDNTELCTL}
 I4B_CONFIG+=	HAVE_ISDNTELCTL=YES
-MAN8+=		isdntelctl.8.gz
+PLIST_FILES+=   man/man8/isdntelctl.8.gz
 PLIST_FILES+=	sbin/isdntelctl
 .endif
 
 .if ${PORT_OPTIONS:MISDNTEL}
 I4B_CONFIG+=	HAVE_ISDNTEL=YES
-MAN8+=		isdntel.8.gz
+PLIST_FILES+=   man/man8/isdntel.8.gz
 PLIST_FILES+=	sbin/isdntel
 .endif
 
 .if ${PORT_OPTIONS:MISDNTEST}
 I4B_CONFIG+=	HAVE_ISDNTEST=YES
-MAN8+=		isdntest.8.gz
+PLIST_FILES+=   man/man8/isdntest.8.gz
 PLIST_FILES+=	sbin/isdntest
 .endif
 
 .if ${PORT_OPTIONS:MISDNTRACE}
 I4B_CONFIG+=	HAVE_ISDNTRACE=YES
-MAN8+=		isdntrace.8.gz
+PLIST_FILES+=   man/man8/isdntrace.8.gz
 PLIST_FILES+=	sbin/isdntrace
 .endif
 

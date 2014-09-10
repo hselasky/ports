@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	isdn4bsd-kmod
-PORTVERSION=	2.0.10
+PORTVERSION=	2.0.11
 CATEGORIES=	comms kld
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://home.selasky.org:8192/distfiles/
@@ -17,7 +17,8 @@ COMMENT=	ISDN4BSD kernel module driver for various ISDN and analog phone adapter
 
 LICENSE=	BSD
 
-LIB_DEPENDS=	libcapi20.1:${PORTSDIR}/comms/libcapi
+BUILD_DEPENDS=	libcapi>=2.0.2:${PORTSDIR}/comms/libcapi
+LIB_DEPENDS=	libcapi20.so:${PORTSDIR}/comms/libcapi
 
 SSP_UNSAFE=	kernel module does not support ssp
 USES=		kmod tar:bzip2 uidfix
