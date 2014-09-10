@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	virtual_oss_ctl
-PORTVERSION=	1.0.3
+PORTVERSION=	1.0.4
 CATEGORIES=	audio
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://home.selasky.org:8192/distfiles/
@@ -11,17 +11,9 @@ MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	A grapical control panel for the virtual OSS daemon
 
 LICENSE=	BSD
-USE_BZIP2=	yes
-NO_STAGE=	yes
+USES=		qmake tar:bzip2
 
 USE_QT4=	gui qmake_build moc_build rcc_build
 
-QMAKE_VOSS=	${QMAKE} -unix PREFIX=${PREFIX} -o
+.include <bsd.port.mk>
 
-.include <bsd.port.pre.mk>
-
-do-configure:
-	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} \
-		${QMAKE_VOSS} Makefile ${PORTNAME}.pro
-
-.include <bsd.port.post.mk>
