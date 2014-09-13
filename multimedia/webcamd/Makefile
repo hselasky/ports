@@ -8,12 +8,12 @@ MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://home.selasky.org:8192/distfiles/
 
 MAINTAINER=	hselasky@FreeBSD.org
-COMMENT=	A port of Linux USB webcam and DVB drivers into userspace
+COMMENT=	Port of Linux USB webcam and DVB drivers into userspace
+
+LICENSE=	GPLv2
 
 BUILD_DEPENDS=	v4l_compat>=1.0.20100321:${PORTSDIR}/multimedia/v4l_compat
 LIB_DEPENDS=	libv4l1.so:${PORTSDIR}/multimedia/libv4l
-
-LICENSE=	GPLv2
 
 USES=		pkgconfig tar:bzip2 uidfix
 USE_RC_SUBR=	webcamd
@@ -39,53 +39,53 @@ GROUPS=		webcamd
 
 .include <bsd.port.pre.mk>
 
-MAKE_ARGS+=" HAVE_MAN=YES"
-MAKE_ARGS+=" PTHREAD_LIBS=${PTHREAD_LIBS}"
+MAKE_ARGS+=	"HAVE_MAN=YES"
+MAKE_ARGS+=	"PTHREAD_LIBS=${PTHREAD_LIBS}"
 
 .if ${PORT_OPTIONS:MCUSE}
-MAKE_ARGS+=" HAVE_CUSE=YES"
-LIBCUSE=/usr/lib/libcuse.so
+MAKE_ARGS+=	"HAVE_CUSE=YES"
+LIBCUSE=	/usr/lib/libcuse.so
 .else
-BUILD_DEPENDS+= cuse4bsd-kmod>=0.1.31:${PORTSDIR}/multimedia/cuse4bsd-kmod
-LIB_DEPENDS+= libcuse4bsd.so:${PORTSDIR}/multimedia/cuse4bsd-kmod
-LIBCUSE=${LIBDIR}/libcuse4bsd.so
+BUILD_DEPENDS+=	cuse4bsd-kmod>=0.1.31:${PORTSDIR}/multimedia/cuse4bsd-kmod
+LIB_DEPENDS+=	libcuse4bsd.so:${PORTSDIR}/multimedia/cuse4bsd-kmod
+LIBCUSE=	${LIBDIR}/libcuse4bsd.so
 .endif
 
 .if ${PORT_OPTIONS:MDVB}
-MAKE_ARGS+=" HAVE_DVB_DRV=YES"
+MAKE_ARGS+=	"HAVE_DVB_DRV=YES"
 .endif
 
 .if ${PORT_OPTIONS:MINPUT}
-MAKE_ARGS+=" HAVE_INPUT_DRV=YES"
+MAKE_ARGS+=	"HAVE_INPUT_DRV=YES"
 .endif
 
 .if ${PORT_OPTIONS:MRADIO}
-MAKE_ARGS+=" HAVE_RADIO_DRV=YES"
+MAKE_ARGS+=	"HAVE_RADIO_DRV=YES"
 .endif
 
 .if ${PORT_OPTIONS:MWEBCAM}
-MAKE_ARGS+=" HAVE_WEBCAM_DRV=YES"
+MAKE_ARGS+=	"HAVE_WEBCAM_DRV=YES"
 .endif
 
 .if ${PORT_OPTIONS:MHAL}
-MAKE_ARGS+=" HAVE_HAL=YES"
-LIBHAL=${LIBDIR}/libhal.so:${LIBDIR}/libdbus-1.so:
-LIB_DEPENDS+=libhal.so:${PORTSDIR}/sysutils/hal
-LIB_DEPENDS+=libdbus-1.so:${PORTSDIR}/devel/dbus
+MAKE_ARGS+=	"HAVE_HAL=YES"
+LIBHAL=		${LIBDIR}/libhal.so:${LIBDIR}/libdbus-1.so:
+LIB_DEPENDS+=	libhal.so:${PORTSDIR}/sysutils/hal
+LIB_DEPENDS+=	libdbus-1.so:${PORTSDIR}/devel/dbus
 .else
 LIBHAL=
 .endif
 
 .if ${PORT_OPTIONS:MVT_CLIENT}
-MAKE_ARGS+=" HAVE_VTUNER_CLIENT=YES"
+MAKE_ARGS+=	"HAVE_VTUNER_CLIENT=YES"
 .endif
 
 .if ${PORT_OPTIONS:MVT_SERVER}
-MAKE_ARGS+=" HAVE_VTUNER_SERVER=YES"
+MAKE_ARGS+=	"HAVE_VTUNER_SERVER=YES"
 .endif
 
 .if ${PORT_OPTIONS:MDEBUG}
-MAKE_ARGS+=" HAVE_DEBUG=YES"
+MAKE_ARGS+=	"HAVE_DEBUG=YES"
 .endif
 
 .if ${OSVERSION} < 800000
