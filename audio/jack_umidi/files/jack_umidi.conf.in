@@ -1,0 +1,14 @@
+#
+# $FreeBSD$
+#
+# devd script to automatically start jack_umidi
+#
+
+notify 0 {
+        match "system"          "DEVFS";
+        match "subsystem"       "CDEV";
+	match "type"            "CREATE";
+	match "cdev"		"umidi.*";
+        action                  "echo jack_umidi -kBd $cdev | su username";
+};
+
