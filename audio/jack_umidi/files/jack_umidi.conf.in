@@ -9,5 +9,5 @@ notify 0 {
 	match "subsystem"	"CDEV";
 	match "type"		"CREATE";
 	match "cdev"		"umidi.*";
-	action			"echo jack_umidi -kBd $cdev | su username";
+	action			"echo jack_umidi -kBd /dev/$cdev | su username";
 };
