@@ -5,10 +5,9 @@
 #
 
 notify 0 {
-        match "system"          "DEVFS";
-        match "subsystem"       "CDEV";
-	match "type"            "CREATE";
+	match "system"		"DEVFS";
+	match "subsystem"	"CDEV";
+	match "type"		"CREATE";
 	match "cdev"		"umidi.*";
-        action                  "echo jack_umidi -kBd $cdev | su username";
+	action			"echo jack_umidi -kBd $cdev | su username";
 };
-
