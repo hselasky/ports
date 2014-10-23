@@ -2,8 +2,7 @@
 # $FreeBSD: head/audio/jack/Makefile 364468 2014-08-09 19:39:09Z antoine $
 
 PORTNAME=	jackit
-PORTVERSION=	0.121.3
-PORTREVISION=	5
+PORTVERSION=	0.124.1
 CATEGORIES=	audio
 MASTER_SITES=	http://jackaudio.org/downloads/
 DISTNAME=	jack-audio-connection-kit-${PORTVERSION}
@@ -22,11 +21,14 @@ LIB_DEPENDS=	libportaudio.so:${PORTSDIR}/audio/portaudio \
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 USES=		gmake pathfix pkgconfig libtool:keepla
+USE_BDB=        48
 
 CONFIGURE_ARGS=	--enable-portaudio \
 		--with-default-tmpdir=/tmp
+
+CFLAGS+=	-I${BDB_INCLUDE_DIR}
 CPPFLAGS+=	-I${LOCALBASE}/include
-LIBS+=		-L${LOCALBASE}/lib
+LIBS+=		-L${LOCALBASE}/lib -L${BDB_LIB_DIR}
 INSTALL_TARGET=	install-strip
 
 LATEST_LINK=	jack
@@ -55,6 +57,7 @@ CONFIGURE_ENV+=	ac_cv_lib_readline_readline=no \
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|define USE_MLOCK|undef USE_MLOCK|' \
+		-e 's|alloca.h||' \
 		${WRKSRC}/configure
 	@${REINPLACE_CMD} -e "s,-lpthread,-pthread," \
 		${WRKSRC}/configure ${WRKSRC}/libjack/Makefile.in \
