@@ -45,8 +45,6 @@ include/jack/types.h
 include/jack/uuid.h
 include/jack/weakjack.h
 include/jack/weakmacros.h
-%%ALSA%%lib/jack/a2j_in.la
-%%ALSA%%lib/jack/a2j_in.so
 lib/jack/inprocess.la
 lib/jack/inprocess.so
 lib/jack/intime.la
