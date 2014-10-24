@@ -1,13 +1,14 @@
 #
 # $FreeBSD$
 #
-# devd script to automatically start jack_umidi
+# Script to automatically start jack_umidi when a device is plugged in.
+# This will attempt to run jack_umidi as whatever user jackd is running as.
 #
 
 notify 0 {
 	match "system"		"DEVFS";
 	match "subsystem"	"CDEV";
 	match "type"		"CREATE";
-	match "cdev"		"umidi.*";
-	action			"echo jack_umidi -kBd /dev/$cdev | su username";
+	match "cdev"		"umidi[0-9]*[.][0-9]*";
+	action			"set JPID=`pgrep -n jackd` ; [ \! -z $JPID ] && set JUSER=`ps -o user= -p $JPID` && (echo jack_umidi -kBC /dev/$cdev | su $JUSER)"
 };
