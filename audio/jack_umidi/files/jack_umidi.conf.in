@@ -10,5 +10,5 @@ notify 0 {
 	match "subsystem"	"CDEV";
 	match "type"		"CREATE";
 	match "cdev"		"umidi[0-9]*[.][0-9]*";
-	action			"set JPID=`pgrep -n jackd` ; [ \! -z $JPID ] && set JUSER=`ps -o user= -p $JPID` && (echo jack_umidi -kBC /dev/$cdev | su $JUSER)"
+	action			"set JPID=`pgrep -n jackd` ; [ \! -z $JPID ] && set JUSER=`ps -o user= -p $JPID` && chown $JUSER:$JUSER /dev/$cdev && (echo jack_umidi -kBd /dev/$cdev | su $JUSER)"
 };
