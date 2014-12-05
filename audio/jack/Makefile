@@ -1,8 +1,9 @@
 # Created by: Tilman Linneweh <arved@FreeBSD.org>
-# $FreeBSD: head/audio/jack/Makefile 364468 2014-08-09 19:39:09Z antoine $
+# $FreeBSD: head/audio/jack/Makefile 373578 2014-11-28 19:35:48Z nox $
 
 PORTNAME=	jackit
 PORTVERSION=	0.124.1
+PORTREVISION=	2
 CATEGORIES=	audio
 MASTER_SITES=	http://jackaudio.org/downloads/
 DISTNAME=	jack-audio-connection-kit-${PORTVERSION}
@@ -16,12 +17,13 @@ LICENSE_COMB=	multi
 LIB_DEPENDS=	libportaudio.so:${PORTSDIR}/audio/portaudio \
 		libsndfile.so:${PORTSDIR}/audio/libsndfile \
 		libsamplerate.so:${PORTSDIR}/audio/libsamplerate \
-		libcelt0.so:${PORTSDIR}/audio/celt
+		libcelt0.so:${PORTSDIR}/audio/celt \
+		libuuid.so:${PORTSDIR}/misc/e2fsprogs-libuuid
 
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 USES=		gmake pathfix pkgconfig libtool:keepla
-USE_BDB=        48
+USE_BDB=	48+
 
 CONFIGURE_ARGS=	--enable-portaudio \
 		--with-default-tmpdir=/tmp
