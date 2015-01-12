@@ -12,10 +12,11 @@ COMMENT=	Linux Event Device library
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		gettext gmake libtool pkgconfig python tar:xz
-USE_AUTOTOOLS=	aclocal automake autoconf
+GNU_CONFIGURE=	yes
 
-BASE_HEADERS=	input.h uinput.h
+USES=		autoreconf gettext gmake libtool pkgconfig python tar:xz
+
+CONFIGURE_ARGS=	--with-pkgconfigdir="${PREFIX}/libdata/pkgconfig"
 
 post-patch:
 	${FIND} ${WRKSRC} -name "*.[ch]" | ${XARGS} -n 10 ${REINPLACE_CMD} \
@@ -26,13 +27,6 @@ post-patch:
 		s|__u16|uint16_t|g; s|__s16|int16_t|g; \
 		s|__u32|uint32_t|g; s|__s32|int32_t|g; \
 		s|__u64|uint64_t|g; s|__s64|int64_t|g'
-
-post-install:
-	@${MKDIR} ${STAGEDIR}${PREFIX}/include/linux
-.for i in ${BASE_HEADERS}
-	${INSTALL_DATA} ${WRKSRC}/include/linux/${i} \
-		${STAGEDIR}${PREFIX}/include/linux/
-.endfor
 
 .include <bsd.port.mk>
 

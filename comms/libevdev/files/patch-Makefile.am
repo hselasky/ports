@@ -1,11 +1,14 @@
---- Makefile.am.orig	2015-01-12 09:40:58.000000000 +0100
-+++ Makefile.am	2015-01-12 09:41:35.000000000 +0100
-@@ -3,7 +3,7 @@
+--- Makefile.am.orig	2013-10-22 03:34:17.000000000 +0200
++++ Makefile.am	2015-01-12 10:13:14.000000000 +0100
+@@ -3,9 +3,9 @@
  PRINT_DIRECTORY_FLAGS_0=--no-print-directory
  PRINT_DIRECTORY_FLAGS_=$(PRINT_DIRECTORY_FLAGS_$(AM_DEFAULT_VERBOSITY))
  AM_MAKEFLAGS = $(PRINT_DIRECTORY_FLAGS_$(V))
 -SUBDIRS = doc libevdev tools test
 +SUBDIRS = doc libevdev
  
- pkgconfigdir = $(libdir)/pkgconfig
+-pkgconfigdir = $(libdir)/pkgconfig
++pkgconfigdir = $(prefix)/libdata/pkgconfig
  pkgconfig_DATA = libevdev.pc
+ 
+ EXTRA_DIST = libevdev.pc.in

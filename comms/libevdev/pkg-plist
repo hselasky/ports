@@ -1,11 +1,9 @@
 include/libevdev-1.0/libevdev/libevdev.h
 include/libevdev-1.0/libevdev/libevdev-uinput.h
-include/linux/input.h
-include/linux/uinput.h
 lib/libevdev.so.2.1.5
 lib/libevdev.so.2
 lib/libevdev.so
 lib/libevdev.a
-lib/pkgconfig/libevdev.pc
+libdata/pkgconfig/libevdev.pc
 man/man3/libevdev.3.gz
 
