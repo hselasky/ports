@@ -2,7 +2,6 @@
 
 PORTNAME=	cuse4bsd-kmod
 PORTVERSION=	0.1.36
-PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://home.selasky.org:8192/distfiles/
