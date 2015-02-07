@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	chan_capi
-PORTVERSION=	2.0.8
+PORTVERSION=	2.0.9
 CATEGORIES=	comms
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://home.selasky.org:8192/distfiles/
