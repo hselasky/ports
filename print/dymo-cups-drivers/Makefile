@@ -1,20 +1,23 @@
-# Created by: Konstantin Reznichenko <kot@premierbank.dp.ua>
-# $FreeBSD: head/archivers/arj/Makefile 371241 2014-10-20 08:12:20Z marino $
+# $FreeBSD$
 
 PORTNAME=	dymo-cups-drivers
 PORTVERSION=	1.4.0
-PORTREVISION=	4
-CATEGORIES=	archivers
+CATEGORIES=	print
 MASTER_SITES=	http://download.dymo.com/Software/Linux/
-WRKSRC=		work/dymo-cups-drivers-1.4.0.5
+
 MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	Open source DYMO CUPS driver
-CONFIGURE_ENV=	CFLAGS="-I${LOCALBASE}/include" LDFLAGS="-L${LOCALBASE}/lib"
+
 LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+LIB_DEPENDS=	libcupsimage.so:${PORTSDIR}/print/cups-image
+
+WRKSRC=		${WRKDIR}/dymo-cups-drivers-1.4.0.5
 
 USES=		gmake
-USE_AUTOTOOLS=	autoconf
-ALL_TARGET=	all
-STRIP=		# empty
+GNU_CONFIGURE=	yes
+CPPFLAGS+=	-I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib
 
 .include <bsd.port.mk>
