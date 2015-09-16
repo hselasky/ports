@@ -1,4 +1,4 @@
-# $FreeBSD: head/devel/libevdev/Makefile 397048 2015-09-16 10:27:37Z jbeich $
+# $FreeBSD$
 
 PORTNAME=	libevdev
 PORTVERSION=	1.4.4
