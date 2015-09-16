@@ -1,29 +1,33 @@
-# $FreeBSD: head/x11-drivers/xf86-input-mouse/Makefile 374982 2014-12-19 23:03:54Z dumbbell $
+# $FreeBSD$
 
 PORTNAME=	xf86-input-evdev
-PORTVERSION=	2.9.1
+PORTVERSION=	2.9.2
 CATEGORIES=	x11-drivers
 
 MAINTAINER=	x11@FreeBSD.org
 COMMENT=	X.Org event device input driver
 
-LIB_DEPENDS=	libevdev.so:${PORTSDIR}/comms/libevdev
+LICENSE=	MIT # various styles
+LICENSE_FILE=	${WRKSRC}/COPYING
+
+BUILD_DEPENDS=	v4l_compat>=1.0.20110603:${PORTSDIR}/multimedia/v4l_compat
+LIB_DEPENDS=	libevdev.so:${PORTSDIR}/devel/libevdev
+RUN_DEPENDS=	webcamd>=3.1.0.1:${PORTSDIR}/multimedia/webcamd
 
 XORG_CAT=	driver
+USES=		pathfix
+CONFIGURE_ENV=	UDEV_CFLAGS=" " UDEV_LIBS=" "
+INSTALL_TARGET=	install-strip
 
-GNU_CONFIGURE=yes
+OPTIONS_DEFINE=	MULTITOUCH
 
-USES=		autoreconf gmake libtool pathfix pkgconfig gettext
+MULTITOUCH_DESC=	XInput 2.2 multitouch support
+MULTITOUCH_LIB_DEPENDS=	libmtdev.so:${PORTSDIR}/devel/libmtdev
 
-post-patch:
-	${FIND} ${WRKSRC} -name "*.[ch]" | ${XARGS} -n 10 ${REINPLACE_CMD} \
-	    -e 's|linux/types.h|sys/types.h|g; \
-	    	s|linux/version.h|sys/param.h|g; \
-		s|_IOC_READ|IOC_OUT|g; \
-		s|_IOC_WRITE|IOC_IN|g; \
-		s|__u8|uint8_t|g; s|__s8|int8_t|g; \
-		s|__u16|uint16_t|g; s|__s16|int16_t|g; \
-		s|__u32|uint32_t|g; s|__s32|int32_t|g; \
-		s|__u64|uint64_t|g; s|__s64|int64_t|g'
+post-patch-MULTITOUCH-off:
+# XXX Convert to CONFIGURE_ENV
+	@${REINPLACE_CMD} -i '.mtdev.bak' \
+		-e '/PKG_CONFIG/s/mtdev/nonexistent/' \
+		${WRKSRC}/configure
 
 .include <bsd.port.mk>
