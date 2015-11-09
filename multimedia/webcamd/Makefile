@@ -71,9 +71,6 @@ GROUPS=		webcamd
 MAKE_ARGS+=	HAVE_MAN="YES"
 MAKE_ARGS+=	PTHREAD_LIBS="-lpthread"
 
-#
-# This step is optional
-#
 do-configure:
 	${MAKE} -C${WRKSRC}/tools/linux_make
 	${MAKE} ${MAKE_ARGS} configure -C${WRKSRC}
