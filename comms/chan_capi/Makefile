@@ -31,9 +31,10 @@ INCLUDEDIR=	${PREFIX}/include
 USE_LDCONFIG=	yes
 MAKE_JOBS_SAFE=	yes
 
-OPTIONS_DEFINE=	DEBUG
+OPTIONS_DEFINE=	DEBUG CLANG
 
 DEBUG_DESC=Enable debugging
+CLANG_DESC=Build using clang
 
 .include <bsd.port.options.mk>
 
@@ -44,6 +45,10 @@ MAKE_ARGS=	PREFIX=${PREFIX} \
 
 .if ${PORT_OPTIONS:MDEBUG}
 MAKE_ARGS+=	HAVE_DEBUG=YES
+.endif
+
+.if ${PORT_OPTIONS:MCLANG}
+MAKE_ARGS+=	CC="/usr/bin/clang"
 .endif
 
 .include <bsd.port.pre.mk>
