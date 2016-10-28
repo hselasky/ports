@@ -1,5 +1,5 @@
 # Created by: Hans Petter Selasky <hselasky@FreeBSD.org>
-# $FreeBSD: head/audio/virtual_oss/Makefile 424830 2016-10-28 13:03:39Z kwm $
+# $FreeBSD$
 
 PORTNAME=	virtual_oss
 PORTVERSION=	1.1.1
