@@ -28,7 +28,6 @@ LIB_DEPENDS+=	libcuse4bsd.so:multimedia/cuse4bsd-kmod
 
 BLUETOOTH_DESC=	Build with bluetooth support
 BLUETOOTH_MAKE_ARGS=	HAVE_BLUETOOTH="YES"
-DEBUG_DESC=	Build with debugging support
 DEBUG_MAKE_ARGS=	HAVE_DEBUG="YES"
 
 PLIST_FILES=	sbin/virtual_oss \

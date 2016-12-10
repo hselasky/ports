@@ -33,7 +33,6 @@ MAKE_JOBS_SAFE=	yes
 
 OPTIONS_DEFINE=	DEBUG CLANG
 
-DEBUG_DESC=Enable debugging
 CLANG_DESC=Build using clang
 
 .include <bsd.port.options.mk>

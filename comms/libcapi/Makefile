@@ -27,7 +27,6 @@ OPTIONS_DEFAULT=BINTEC CLIENT MAN
 
 BINTEC_DESC=Build with BinTec support
 CLIENT_DESC=Build with remote CAPI support
-DEBUG_DESC=Enable debugging
 MAN_DESC=Install manual pages
 
 .include <bsd.port.options.mk>
