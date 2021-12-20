@@ -6,22 +6,25 @@
 #
 
 PORTNAME=	isdn4bsd-utils
-PORTVERSION=	2.0.12
-DISTNAME=	isdn4bsd-${PORTVERSION}
+DISTVERSIONPREFIX=	v
+DISTVERSION=		2.0.14
 CATEGORIES=	comms kld
-MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
-		http://home.selasky.org:8192/distfiles/
 
 MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	ISDN4BSD utilities
 
-LICENSE=	BSD
+LICENSE=	BSD2CLAUSE
 
 BUILD_DEPENDS=	libcapi>=2.0.2:${PORTSDIR}/comms/libcapi
 LIB_DEPENDS=    libcapi20.so:${PORTSDIR}/comms/libcapi
 
 USE_RC_SUBR=	isdnd
 USES=		tar:bzip2 uidfix
+
+USE_GITHUB=     yes
+GH_PROJECT=     isdn4bsd
+GH_ACCOUNT=     hselasky
+
 BINDIR=		${PREFIX}/sbin
 LIBDIR=		${PREFIX}/lib
 MANDIR=		${PREFIX}/man/man
