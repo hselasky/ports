@@ -6,17 +6,19 @@
 #
 
 PORTNAME=	libcapi
-PORTVERSION=	2.0.2
+DISTVERSIONPREFIX=	v
+DISTVERSION=		2.0.3
 CATEGORIES=	comms
-MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
-		http://home.selasky.org:8192/distfiles/
 
 MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	ISDN CAPI v2.0 library
 
-LICENSE=	BSD
+LICENSE=	BSD2CLAUSE
 
 USES=		tar:bzip2 uidfix
+USE_GITHUB=	yes
+GH_ACCOUNT=	hselasky
+
 LIBDIR=		${PREFIX}/lib
 INCLUDEDIR=	${PREFIX}/include
 USE_LDCONFIG=	yes
